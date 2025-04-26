@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script><script>linkvertise(1343427, {whitelist: [], blacklist: [""]});</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Obfuscator & Protection</title>
+    <style>
+        :root {
+            --primary: #00ff00;
+            --primary-dark: #00cc00;
+            --background: #000000;
+            --card-bg: #111111;
+            --text: #ffffff;
+            --secondary: #00aa00;
+            --glow: rgba(0, 255, 0, 0.5);
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: rgba(0, 20, 0, 0.8);
+            border-bottom: 1px solid var(--primary);
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 0 15px var(--glow);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            text-shadow: 0 0 10px var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .header p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 95%;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px var(--glow);
+        }
+        
+        .feature-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: rgba(0, 40, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary);
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .feature-item h3 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 16px;
+        }
+        
+        .code-area {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .code-area {
+                flex-direction: column;
+            }
+        }
+        
+        .code-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .column-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .column-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .badge {
+            font-size: 12px;
+            background: rgba(0, 80, 0, 0.5);
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+        
+        textarea {
+            background: rgba(10, 10, 10, 0.8);
+            color: var(--primary);
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            flex: 1;
+            min-height: 350px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            resize: none;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--glow), inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: rgba(0, 30, 0, 0.8);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            padding: 12px 24px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: rgba(0, 50, 0, 0.8);
+            box-shadow: 0 0 15px var(--glow);
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .status {
+            text-align: center;
+            min-height: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+        }
+        
+        .back-button:hover {
+            background: rgba(0, 50, 0, 0.8);
+            box-shadow: 0 0 10px var(--glow);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #333;
+            margin-top: 20px;
+        }
+        
+        /* Animated background */
+        .bg-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 20, 0, 0.1),
+                rgba(0, 50, 0, 0.05),
+                rgba(0, 20, 0, 0.1)
+            );
+            z-index: -1;
+        }
+        
+        /* Loading spinner for obfuscate button */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .spinner {
+            display: none;
+            border: 2px solid rgba(0, 255, 0, 0.1);
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+        }
+        
+        /* Button icons */
+        .btn-icon {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-effect"></div>
+    <a href="../index.html" class="back-button">← Back to Terminal</a>
+    
+    <div class="header">
+        <h1>HTML Obfuscator & Protection</h1>
+        <p>Secure your code with our encryption and protection</p>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>🔒 Code Protection</h3>
+                    <p>Our encryption makes your code hard to read and understand</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🛡️ Protection</h3>
+                    <p>Automatically adds protection against browser inspection tools and more</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Easy to Use</h3>
+                    <p>Paste your code, click obfuscate, and get protected code instantly</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-area">
+            <div class="code-column">
+                <div class="column-header">
+                    <span class="column-title">Input</span>
+                    <span class="badge">Original Code</span>
+                </div>
+                <textarea id="input" placeholder="Paste your HTML code here..."></textarea>
+            </div>
+            
+            <div class="code-column">
+                <div class="column-header">
+                    <span class="column-title">Output</span>
+                    <span class="badge">Protected Code</span>
+                </div>
+                <textarea id="output" placeholder="Obfuscated code will appear here..." readonly></textarea>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="obfuscate">
+                <span class="btn-icon">🔒</span>
+                <span>Obfuscate</span>
+                <span class="spinner" id="obfuscate-spinner"></span>
+            </button>
+            <button id="copy">
+                <span class="btn-icon">📋</span>
+                <span>Copy to Clipboard</span>
+            </button>
+            <button id="clear">
+                <span class="btn-icon">🗑️</span>
+                <span>Clear</span>
+            </button>
+            <button id="preview">
+                <span class="btn-icon">👁️</span>
+                <span>Preview</span>
+            </button>
+        </div>
+        
+        <div class="status" id="status"></div>
+    </div>
+    
+    <footer>
+        Created by bmhien | HTML Obfuscation and Protection Tool | v0.0.1 BETA
+    </footer>
+    
+    <script src="obfuscate.js"></script>
+    
+    <script>
+        // Add loading state to obfuscate button
+        document.getElementById('obfuscate').addEventListener('click', function() {
+            const spinner = document.getElementById('obfuscate-spinner');
+            spinner.style.display = 'block';
+            setTimeout(() => {
+                spinner.style.display = 'none';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
