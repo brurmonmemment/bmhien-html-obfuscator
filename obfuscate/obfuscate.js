@@ -69,7 +69,7 @@ function checkAndPerformObfuscation() {
                 const encrypted = encryptAES(htmlWithDisableScript, key);
                 
                 // Create the decryption script
-                const obfuscated = `<!--Obfuscated by live-is.games--></script><script>(function(){const _0x1a3b=${"`"+key+"`"};const _0x93cd="${encrypted}";function _0x37fe(_0x93cd,_0x1a3b){const _0x2c4d=atob('${btoa("CryptoJS.enc.Utf8.parse")}');const _0x59af=atob('${btoa("CryptoJS.AES.decrypt")}');const _0x8e71=eval(_0x2c4d)(_0x1a3b);const _0x47bc=eval(_0x59af)(_0x93cd,_0x8e71,{mode:eval(atob('${btoa("CryptoJS.mode.ECB")}')),padding:eval(atob('${btoa("CryptoJS.pad.Pkcs7")}'))});return _0x47bc.toString(eval(atob('${btoa("CryptoJS.enc.Utf8")}')))}let _0x5dce=String.fromCharCode(104,116,116,112,115,58,47,47)+String.fromCharCode(99,100,110,106,115,46,99,108,111,117,100,102,108,97,114,101,46,99,111,109,47)+String.fromCharCode(97,106,97,120,47,108,105,98,115,47,99,114,121,112,116,111,45,106,115,47,52,46,49,46,49,47,99,114,121,112,116,111,45,106,115,46,109,105,110,46,106,115);const _0x7b2d=document.createElement('script');_0x7b2d.src=_0x5dce;_0x7b2d.onload=function(){const _0x3f9a=_0x37fe(_0x93cd,_0x1a3b);document.write(_0x3f9a);};document.head.appendChild(_0x7b2d);})();<\/script>`;
+                const obfuscated = `</script><script>(function(){const _0x1a3b=${"`"+key+"`"};const _0x93cd="${encrypted}";function _0x37fe(_0x93cd,_0x1a3b){const _0x2c4d=atob('${btoa("CryptoJS.enc.Utf8.parse")}');const _0x59af=atob('${btoa("CryptoJS.AES.decrypt")}');const _0x8e71=eval(_0x2c4d)(_0x1a3b);const _0x47bc=eval(_0x59af)(_0x93cd,_0x8e71,{mode:eval(atob('${btoa("CryptoJS.mode.ECB")}')),padding:eval(atob('${btoa("CryptoJS.pad.Pkcs7")}'))});return _0x47bc.toString(eval(atob('${btoa("CryptoJS.enc.Utf8")}')))}let _0x5dce=String.fromCharCode(104,116,116,112,115,58,47,47)+String.fromCharCode(99,100,110,106,115,46,99,108,111,117,100,102,108,97,114,101,46,99,111,109,47)+String.fromCharCode(97,106,97,120,47,108,105,98,115,47,99,114,121,112,116,111,45,106,115,47,52,46,49,46,49,47,99,114,121,112,116,111,45,106,115,46,109,105,110,46,106,115);const _0x7b2d=document.createElement('script');_0x7b2d.src=_0x5dce;_0x7b2d.onload=function(){const _0x3f9a=_0x37fe(_0x93cd,_0x1a3b);document.write(_0x3f9a);};document.head.appendChild(_0x7b2d);})();<\/script>`;
                 document.getElementById('output').value = obfuscated;
                 
                 // Show success message with additional note about Linkvertise
@@ -119,7 +119,7 @@ function addDisableDevtoolScript(html) {
         return html; // Script already exists, return as is
     }
     
-    const disableScript = "<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>\n<script src=\"https://cdn.jsdelivr.net/gh/bm-hien/jscript@main/anti-iframe.js\"></script>";
+    const disableScript = "<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>\n<script src=\"(TODO: mod anti iframe script to only work on actual iframes instead of embedding objects)"></script>";
     
     // Find the head tag to inject the script
     const headEndIndex = html.indexOf('</head>');
@@ -248,4 +248,5 @@ document.addEventListener('DOMContentLoaded', function() {
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js';
     document.head.appendChild(script);
+
 });
