@@ -9,8 +9,7 @@ document.getElementById('obfuscate').addEventListener('click', function() {
     const spinner = document.getElementById('obfuscate-spinner');
     spinner.style.display = 'block';
 
-    // Redirect to Linkvertise instead of performing obfuscation directly
-    redirectToLinkvertise();
+    checkAndPerformObfuscation();
 });
 
 function redirectToLinkvertise() {
@@ -41,11 +40,6 @@ function redirectToLinkvertise() {
 }
 
 function checkAndPerformObfuscation() {
-    // Parse URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    
-    // Check if we have returned from Linkvertise
-    if (urlParams.has('obfuscate') && urlParams.get('obfuscate') === 'true' && localStorage.getItem('obfuscationPending') === 'true') {
         // Get the saved code
         const savedCode = localStorage.getItem('pendingObfuscateCode');
         
@@ -85,7 +79,6 @@ function checkAndPerformObfuscation() {
             showStatus('Obfuscation session expired. Please try again.', 'error');
             document.getElementById('obfuscate-spinner').style.display = 'none';
         }
-    }
 }
 
 // Check for Linkvertise return on page load
@@ -105,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     infoBox.style.border = '1px dashed var(--primary)';
     infoBox.style.borderRadius = '5px';
     infoBox.style.backgroundColor = 'rgba(0, 20, 0, 0.3)';
-    infoBox.innerHTML = '<p style="margin: 0; text-align: center; color: var(--primary);">To help support this free tool, you\'ll need to complete a short Linkvertise process when clicking Obfuscate</p>';
+    infoBox.innerHTML = '<p style="margin: 0; text-align: center; color: var(--primary);">Please support bm-hien by using their obfuscation tool with linkvertise, you will also get slightly better security unless you are also using this for the same purpose</p>';
     
     // Insert before the controls div
     const controlsDiv = document.querySelector('.controls');
@@ -250,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(script);
 
 });
+
 
 
 
