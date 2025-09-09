@@ -12,38 +12,7 @@ document.getElementById('obfuscate').addEventListener('click', function() {
     checkAndPerformObfuscation();
 });
 
-function redirectToLinkvertise() {
-    // Save the input code to localStorage so we can retrieve it after Linkvertise redirect
-    const input = document.getElementById('input').value.trim();
-    localStorage.setItem('pendingObfuscateCode', input);
-    
-    // Set a flag that we're in the middle of an obfuscation process
-    localStorage.setItem('obfuscationPending', 'true');
-    
-    // Your Linkvertise user ID - replace with your actual ID
-    const linkvertiseId = '1343427'; // Change this to your actual Linkvertise ID
-    
-    // Current page URL for the dynamic redirect
-    const currentUrl = window.location.href;
-    
-    // Create unique identifier for this session to prevent caching issues
-    const sessionId = Date.now().toString(36) + Math.random().toString(36).substr(2);
-    
-    // Generate Linkvertise URL with return to the same page + unique identifier
-    const redirectUrl = encodeURIComponent(`${currentUrl}?session=${sessionId}&obfuscate=true`);
-    
-    // Create Linkvertise URL
-    const linkvertiseUrl = `https://linkvertise.com/${linkvertiseId}/1?o=${redirectUrl}`;
-    
-    // Redirect to Linkvertise
-    window.location.href = linkvertiseUrl;
-}
-
 function checkAndPerformObfuscation() {
-        // Get the saved code
-        const savedCode = localStorage.getItem('pendingObfuscateCode');
-        
-        if (savedCode) {
             // Clear the pending flags
             localStorage.removeItem('pendingObfuscateCode');
             localStorage.removeItem('obfuscationPending');
@@ -75,10 +44,6 @@ function checkAndPerformObfuscation() {
                 showStatus('Error during obfuscation: ' + error.message, 'error');
                 document.getElementById('obfuscate-spinner').style.display = 'none';
             }
-        } else {
-            showStatus('Obfuscation session expired. Please try again.', 'error');
-            document.getElementById('obfuscate-spinner').style.display = 'none';
-        }
 }
 
 // Check for Linkvertise return on page load
@@ -243,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(script);
 
 });
+
 
 
 
