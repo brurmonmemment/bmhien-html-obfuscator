@@ -13,12 +13,7 @@ document.getElementById('obfuscate').addEventListener('click', function() {
 });
 
 function checkAndPerformObfuscation() {
-            // Clear the pending flags
-            localStorage.removeItem('pendingObfuscateCode');
-            localStorage.removeItem('obfuscationPending');
-            
-            // Set the input field with the saved code
-            document.getElementById('input').value = savedCode;
+            const savedCode = document.getElementById('input').value.trim();
             
             // Now perform the actual obfuscation
             try {
@@ -208,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(script);
 
 });
+
 
 
 
