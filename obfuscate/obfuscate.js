@@ -72,7 +72,7 @@ function addDisableDevtoolScript(html) {
         return html; // Script already exists, return as is
     }
     
-    const disableScript = `<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script><script src="anti-iframe-mod.js"></script>`; // NEW: use local anti iframe script
+    const disableScript = `<script disable-devtool-auto src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>`; // test without iframe
     
     // Find the head tag to inject the script
     const headEndIndex = html.indexOf('</head>');
@@ -203,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(script);
 
 });
+
 
 
 
